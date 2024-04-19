@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Analysis</title>
+    <link href="styles/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1>Movie Data Analysis</h1>
+
+    <h3>Overall Introduction</h3>
+
+    <p>Movies are a form of entertainment that has existed since the end of the 19th century.
+        They have evolved drastically, including sound, color, animation, and computer-generated images (CGI).
+        At the same time, there have been different trends, including different genres being popular and
+        different companies producing more movies. However, with all these changes, movies have remained a
+        central part of culture worldwide. Just in the past year, the success of movies like Barbie and
+        Oppenheimer were massive stories. They have won many awards, generated billions in revenue, and led to
+        increased attention on each subject matter. Therefore, we want to analyze data from thousands of movies
+        over the past century by performing time, location, genre, and popularity-based analyses. By
+        investigating these topics and visualizing the results, we will better understand how movies differ and
+        what drives popularity and success among different movies. </p>
+
+    <p>Different metrics that we will use to analyze the movie data include popularity, number of votes,
+        budget, release year, runtime, genre, and profit. We can measure success in movies by looking at those
+        that have high profit and have a high popularity score with a significantly high number of votes.</p>
+
+    <p>To learn more about movies and different metrics of success, you can visit
+         <a href="https://www.imdb.com/">the IMDB website</a> and read
+         <a href="https://www.stat.cmu.edu/capstoneresearch/fall2022/315files_f22/team24.html">this study</a>
+         from the Carnegie Mellon University.</p>
+
+    <h3>Introduction to the data</h3>
+
+    <p> To answer our questions and complete our analysis, we found detailed data for a large universe of movies.
+        The Movie Database is a powerful database that is useful for this task. We preprocessed the data to keep
+        approximately twelve attributes for 6000 movies from The Movie Database released from 1916 to 2023, with a
+        focus on movies produced in the 21st century. The primary attributes we use are budget, revenue, genre(s),
+        popularity, number of votes/ratings, production country, release date/year, runtime, production country,
+        and production companies. After loading the data, we saved the data in a Pandas dataframe with
+        identifiable columns that we used for Altair, Matplotlib, and D3 visualizations. Through our data
+        preprocessing, we also derived some new data points such as profit, main genre, and decade released.</p>
+
+        <div class="center">
+        <table class="tg">
+            <thead>
+              <tr>
+                <th class="tg-0lax">Variable Name</th>
+                <th class="tg-0lax">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-0lax">Budget</td>
+                <td class="tg-0lax">How much the movie cost to make (USD)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Genres</td>
+                <td class="tg-0lax">The different types of genres the movie is classified as </td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Popularity</td>
+                <td class="tg-0lax">Movie popularity score</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Production Countries</td>
+                <td class="tg-0lax">Country/Countries where the movie was made</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Release Date</td>
+                <td class="tg-0lax">Date the movie was released</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Revenue</td>
+                <td class="tg-0lax">Total revenue the movie generated (USD)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Runtime</td>
+                <td class="tg-0lax">Length of the movie (minutes)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Title</td>
+                <td class="tg-0lax">Movie title/td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Average Vote</td>
+                <td class="tg-0lax">Average user rating</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Vote Count</td>
+                <td class="tg-0lax">Total number of votes</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Profit</td>
+                <td class="tg-0lax">Revenue minus Budget (USD)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Profit Buckets</td>
+                <td class="tg-0lax">Profit grouped into range (e.g., Lost Money, $0M-$5M, etc.)</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Release Year</td>
+                <td class="tg-0lax">Year the movie came out</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Main Genre</td>
+                <td class="tg-0lax">Primary genre of the movie</tr>
+              </tr>
+            </tbody>
+            </table>
+        </div>
+        <p>To improve our data visualizations, we performed preprocessing on the data. We dropped columns that
+          were not relevant for our analysis, dropped any rows with blank data, cleaned up the formatting,
+          and created new columns for our visualizations.</p>
+
+        <p>The first dimension we wanted to examine our data on was production country, so we created an interactive 
+            horizontal bar chart of the number of movies produced in each country. It allows you to select and 
+            highlight the bars of individual or multiple countries in red.</p>
+
+            <div id = "plot"></div>
+              <script src='https://d3js.org/d3.v7.min.js' style="margin-left: -500px" ></script>
+              <script src='main.js'></script>
+              <div class = 'image'>
+            </div>
+
+            <p>In general, the vast majority of the movies in the dataset were produced in the United States. 
+                This is due to the presence of Hollywood and how the entertainment industry is centered in the 
+                United States. It is the biggest market for movies in the world as well, and if a movie is successful 
+                in the US, it is likely going to be successful worldwide. Other countries that were among the top 
+                producers include the UK, Canada, and Germany.</p>
+
+        <h3>Profit Analysis</h3>
+        
+        <div class = 'container'>
+          <div class = 'image'>
+            <img src="images/profit_distribution.jpeg" alt="Introductory Website Image." width="50%" height="50%">
+          </div>
+          <div class = 'text'>
+              <p>The above chart shows the distribution of American movies by their profit. We decided to only look 
+                  at American movies because those were the most common by far of any primary production country. It 
+                  is clear from this chart the vast majority of movies lose money and it is rare for movies to make 
+                  a lot of money.</p>
+          </div>            
+        </div>
+        
+        <h3> The relationship between budget, popularity, and genre</h3>
+
+        <div class = 'container'>
+            <div class = 'text'>
+                <p>Next, we wanted to begin to perform our genre-based analysis. We first created an 
+                  interactive bubble plot that shows the popularity of movies against the budget. The 
+                  colors of the bubble represents the genre and there is also a radio so the movie genres 
+                  can be analyzed individually. The size of the bubble represents the number of votes the 
+                  movie received. When the user hovers over each bubble, it says the name of the movie and 
+                  the corresponding revenue. Of note, we condensed the number of genres by grouping similar ones
+                  together. For instance, the Action genre includes movies primarily classified as "action",
+                  "adventure", "science fiction", and "fantasy".</p>
+                <p>The chart shows that there is a decently strong correlation between budget and popularity. 
+                  Additionally, vote count seems to have no impact on popularity and higher budget movies do not 
+                  necessarily get higher vote counts. Lastly, we can see that most movies have a budget between 
+                  $100-$200 million.</p>
+            </div>
+            <div class = 'image'>
+                <iframe src="images/bubblechart.html" width="100%" height="400px" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <p>We have also created a stacked bar plot that shows the count of movies by genre produced in the 21st 
+          century. It shows how there is been an increase in the proportion of action and horror movies while a 
+          decrease in drama.</p>
+
+        <div class = 'center'>
+            <iframe src="images/stacked_bar_chart.html" width="85%" height="550px" frameborder="0"></iframe>
+        </div>
+
+        <h3>Comparing Movie Length Across Genres</h3>
+
+        <p>Lastly, we created an interactive chart that shows the average runtime by genre for movies in a 
+          single year. The user can select any year between 2000 and 2023 using the dropdown to explore which 
+          genres averaged longer in different years, and to see trends in average runtime for different genres 
+          over time. For instance, documentaries consistently have the shortest average runtime almost every year.</p>
+
+        <div class = 'center'>
+            <iframe src="images/average_runtime_chart.html" width="95%" height="500px" frameborder="0"></iframe>
+        </div>
+
+        <h3>Summary and additional work</h3>
+
+        <p>In this visualization analysis, we explore what leads to the success of a movie and how they have differed 
+          over time and across genres. Our analysis shows how the factors of runtime, profit, and popularity, among 
+          others differ across genres.</p>
+
+        <p>One limitation of our analysis was we only used the first genre in the list of genre classifications for 
+            each movie to avoid overlap or repetition. However, this means movies that truly belong in at least two 
+            categories (e.g., romantic comedies, aka romcoms) we could not categorize completely accurately. 
+            Furthermore, our method of main genre selection was on the assumption that the first genre in the list 
+            was the primary genre, which is most likely true, but we are unable to verify that with complete 
+            certainty.</p>
+
+        <p>If you are interested in the project and want to share more opinions or resource about the project, 
+          please contact: Justin Radist (radist.j@northeastern.edu (mailto:radist.j@northeastern.edu)) or 
+          Zac Steinberg (steinberg.z@northeastern.edu (mailto:steinberg.z@northeastern.edu)).</p>
+
+</body>
+</html>
